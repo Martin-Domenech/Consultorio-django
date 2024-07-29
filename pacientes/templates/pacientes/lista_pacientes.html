@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+<title>Pacientes</title>
+{% endblock titulo %}
+
+
+{% block contenido %}
+<h1 class="titulo">Lista de pacientes</h1>
+<section class="form-pacientes">
+    <form  action="{% url 'buscar_pacientes' %}" method="post">
+        {% csrf_token %}
+        <input class="busqueda" type="text" name="busqueda" placeholder="Buscar paciente">
+        <button type="submit" class="btn btn-primary mb-1">Buscar</button>
+    </form>
+</section>
+
+
+
+
+<div class="scrollable-section">
+    <table class="tabla-estilos">
+        <tbody">
+            <tr>
+                <th>Nombre y Apellido</th>
+                <th>DNI</th>
+                <th>Telefono</th>
+                
+            </tr>
+            {% for paciente in pacientes %}
+            <div>
+                <tr class="fila">
+                    {% if user == paciente.creador %}
+                        <td><a class="link-pacientes" href="{% url 'historia_clinica' paciente.id %}">{{ paciente.nombre }} {{ paciente.apellido }}</a></td>
+                        <td>{{ paciente.dni }}</td>
+                        <td>{{ paciente.telefono }}</td>
+
+                    {% endif %}
+                </tr>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<section class="botones">
+    <a href="{% url 'lista_pacientes' %}"><button type="button" class="btn btn-outline-primary">pacientes</button></a>
+    <a href="{% url 'agregar_pacientes' %}"><button type="button" class="btn btn-outline-primary">Agregar pacientes</button></a>
+</section>
+
+{% endblock contenido %}
+

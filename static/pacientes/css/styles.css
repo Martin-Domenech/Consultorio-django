@@ -1,0 +1,347 @@
+/* Declaración de variables */
+:root {
+    --bg-color-principal: #012549;
+    --bg-color-celeste: #cee7ff;
+    --whidth: 282px;
+    --padding: 10px;
+    --bgcolor: rgb(52, 52, 52);
+    --hovercolor: #7bb9ff;
+    --bordercolor: black;
+    --width-collapsed: 50px;
+}
+
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-color-principal);
+    margin-left: var(--width-collapsed);
+}
+
+
+
+/*************************************************************/
+/************************** HEADER ***************************/
+/*************************************************************/
+#main-container{
+    color: white;
+}
+#sidemenu{
+    background-color: var(--bgcolor);
+    color: white;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-right: groove 4px rgb(0, 0, 0);
+    box-shadow: 0 0 40px rgb(0, 0, 0, 2);
+}
+#sidemenu a{
+    color: white;
+    text-decoration: none;
+}
+#sidemenu #header{
+    box-sizing: border-box;
+    border-bottom: groove 4px rgb(0, 0, 0);
+}
+#sidemenu #header #title{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    font-size: 1.8rem;
+    padding: 1rem 0 1rem 0;
+
+}
+#sidemenu #header #title{
+    vertical-align: middle;
+}
+#sidemenu #profile{
+    border-bottom: groove 4px rgb(0, 0, 0);
+    padding: var(--padding) 0;
+    text-align: center;
+}
+#sidemenu #profile #photo{
+    box-sizing: border-box;
+    padding: var(--padding);
+    margin: 0 auto;
+}
+#sidemenu #profile #photo img{
+    border-radius: 50%;
+    width: 70%;
+}
+#sidemenu #profile #user{
+    margin-bottom: 2rem;
+}
+#sidemenu #profile #photo, #sidemenu #profile #user{
+    font-size: 24px;
+    padding: var(--padding) 0;
+    overflow: hidden;
+}
+#sidemenu #menu-items{
+    overflow: hidden;
+    margin-top: 15px;
+}
+#sidemenu #menu-items .item{
+    width: 282px;
+}
+#sidemenu #menu-items .item .icon{
+    display: inline-block;
+    
+}
+#sidemenu #menu-items .item .icon, #sidemenu #menu-items .item .title{
+    font-size: 18px;
+    vertical-align: middle;
+    overflow: hidden;
+    display: inline-block;
+    margin-left: 1rem;
+}
+#sidemenu #menu-items .item a{
+    display: block;
+}
+#sidemenu #menu-items .item .title:hover{
+    color: var(--hovercolor);
+}
+#sidemenu #menu-items .item .icon{
+    box-sizing: border-box;
+    padding: var(--padding);
+    width: var(--width);
+}
+#sidemenu #menu-items .item .icon img{
+    width: 35px;
+}
+#sidemenu #menu-items .item .title{
+    padding: var(--padding) 0;
+}
+
+
+
+.contenido{
+    margin-left: 250px;
+}
+.contenido .hola_mundo{
+    font-size: 2rem;
+    color: white;
+}
+
+
+
+
+/*************************************************************/
+/********************** Lista Pacientes **********************/
+/*************************************************************/
+.titulo{
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    margin: 2rem 0 2rem 0;
+    font-size: 4rem;
+}
+
+.form-pacientes{
+    display: flex;
+    padding-left: 5%;
+}
+.form-pacientes .busqueda{
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+}
+
+
+
+/* Estilos para la tabla */
+.scrollable-section {
+    width: 90%;
+    max-height: 68vh; /* Ajusta la altura máxima según tus necesidades */
+    overflow-y: auto;
+    margin: 20px auto;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    
+}
+.link-pacientes{
+    text-decoration: none;
+    color: #000000;
+}
+
+.tabla-estilos {
+    width: 100%;
+
+}
+.tabla-estilos .crud{
+    display: flex;
+    padding-left: 10px;
+}
+.tabla-estilos .crud .btn-crud{
+    padding-left: 10px;
+}
+
+.tabla-estilos th, .tabla-estilos td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: left;
+}
+
+.tabla-estilos .fila:hover{
+    background-color: rgb(208, 221, 235);
+}
+.tabla-estilos tbody tr:nth-child(odd) {
+    background-color: #eaf3ff; /* Color de fondo para filas impares */
+}
+.tabla-estilos tbody tr:nth-child(even) {
+    background-color: #ffffff; /* Color de fondo para filas pares */
+}
+.tabla-estilos th {
+    background-color: #9bceff;
+    border: solid 2px black;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    font-size: 1.4rem;
+}
+.botones{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+}
+
+/*************************************************************/
+/************ Info pacientes y Historias clinicas ************/
+/*************************************************************/
+.historiaclinica-view{
+    padding: 2% 5% 1% 5%;
+    display: flex;
+} 
+.historiaclinica-view .info-paciente{
+    border: solid 2px rgb(85, 85, 85);
+    background-color: var(--bg-color-celeste);
+    color: rgb(0, 0, 0);
+    border-radius: 30px;
+    width: 35%;
+    height: min-content;
+    margin-top: 4%;
+    box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.4);
+}
+.historiaclinica-view .info-paciente .titulo-p{
+    padding: 20px;
+    display: flex;
+    background-color: #000000;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    border: solid 2px rgb(85, 85, 85);
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    text-decoration: underline;
+    color: white;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.historiaclinica-view .info-paciente .lista-p{
+    padding: 10px 30px 0 30px;
+    font-size: 1.2rem;
+}
+
+.historiaclinica-view .info-paciente .lista-p .nombre-info{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.historiaclinica-view .info-paciente .lista-p .item-paciente{
+    padding: 20px 0 0 10px;
+    
+}
+.historiaclinica-view .info-paciente .lista-p .item-paciente .spanitem{
+    font-size: 1.3rem;
+    font-family: 'Roboto', sans-serif;
+}
+.historiaclinica-view .info-paciente .crud-icons{
+    display: flex;
+    justify-content: end;
+    padding: 10px 20px 10px 0;
+}
+
+.cont-principal{
+    width: 65%;
+}
+.cont-principal .titulo-hc{
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    margin-bottom: 2%;
+}
+
+.historiaclinica-view .cont-hc{
+    display: block;
+    background-color: var(--bg-color-celeste);
+    margin-left: 5%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 85vh;
+    border: solid 2px rgb(85, 85, 85);
+    box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+}
+.historiaclinica-view .cont-hc .btn-hc{
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #000000;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 5px;
+    transition: background-color 0.1s, font-size 0.3s;
+    font-size: 1.2rem;
+}
+.historiaclinica-view .cont-hc .btn-hc a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.historiaclinica-view .cont-hc .btn-hc:hover{
+    background-color: #1f1f1f;
+    font-size: 1.2rem;
+}
+
+.historiaclinica-view .cont-hc .seccion-hc{
+    margin: 10px;
+    border-radius: 20px;
+    border: solid 1px black;
+    background-color: white;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+}
+
+.historiaclinica-view .cont-hc .seccion-hc .p-hc{
+    padding: 10px 20px 10px 20px;
+}
+.historiaclinica-view .cont-hc .seccion-hc .p-hc span{
+    font-weight: bold;
+}
+
+
+.historiaclinica-view .cont-hc .seccion-hc .fecha-crud{
+    display: flex;
+    padding: 10px 20px 0 20px;
+    justify-content: space-between;
+}
+
+
+
+/*************************************************************/
+/************************* Footer ****************************/
+/*************************************************************/
+.footer{
+    background-color: #012244;
+    border-top: groove 4px rgb(1, 0, 73);
+    margin-top: 5%;
+    padding-left: 250px;
+}
+.footer .row{
+    padding-top: 2rem;
+}

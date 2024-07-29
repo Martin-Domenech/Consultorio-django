@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+<title>HistoriaClinica</title>
+{% endblock titulo %}
+
+
+{% block contenido %}
+<section class="historiaclinica-view">
+    <section class="info-paciente">
+        <h3 class="titulo-p">Información personal</h3>
+        <ul class="lista-p">
+            <li class="nombre-info">{{ paciente.nombre }} {{ paciente.apellido }}</li>
+            <li class="item-paciente">DNI: <span class="spanitem">{{ paciente.dni }}</span></li>
+            <li class="item-paciente">Teléfono: <span class="spanitem"> {{ paciente.telefono }}</span></li>
+            <li class="item-paciente">Fecha de nacimiento: <span class="spanitem">{{ paciente.fecha_nacimiento }}</span></li>
+            <li class="item-paciente">Derivado por: <span class="spanitem">{{ paciente.derivada_por }}</span></li>
+        </ul>
+        <form id="eliminar-form-{{ paciente.id }}" action="{% url 'eliminar_pacientes' paciente.id %}" method="post">
+            {% csrf_token %}
+        </form>
+        <div class="crud-icons">
+            <a href="{% url 'editar_pacientes' paciente.id %}"><i class="bi bi-pencil-square fs-3 text-black"></i></a>
+            <a href="#" class="eliminar-icono" onclick="confirmarEliminarPaciente(event, {{ paciente.id }});">
+                <i class="bi bi-trash fs-3 text-black"></i>
+            </a>
+        </div>  
+    </section>
+
+    <section class="cont-principal">
+        <h3 class="titulo-hc">Historia Clinica</h3>
+        <div class="cont-hc">
+            <a href="{% url 'crear_historiaclinica' paciente.id %}"><button class="btn-hc">Nueva Evolución</button></a>
+            <div class="elemento-hc">
+                {% if historias_clinicas %}
+                    {% for historia_clinica in historias_clinicas %}
+                        <section class="seccion-hc">
+                            <p class="p-hc"> <span>Motivo de consulta: </span>{{ historia_clinica.motivo_consulta }}</p>
+                            <p class="p-hc"><span>Sintomas: </span>{{ historia_clinica.sintomas }}</p>
+                            <p class="p-hc"><span>Comentario de consulta: </span>{{ historia_clinica.comentario_consulta }}</p>
+                            <p class="p-hc"><span>Examen físico: </span>{{ historia_clinica.examen_fisico }}</p>
+                            {% for imagen in historia_clinica.imagenhistoriaclinica_set.all %}
+                                <img src="{{ imagen.imagen.url }}" alt="Imagen de Historia Clínica">
+                                <p>{{ imagen.imagen.url }}</p>
+                            {% endfor %}
+                            <div class="fecha-crud">
+                                <p class="fecha-hc">{{ historia_clinica.fecha|date:"d/m/Y" }} a las {{ historia_clinica.fecha|time:"H:i" }}</p>
+                                <form id="eliminar-form-{{ historia_clinica.id }}" action="{% url 'eliminar_historiaclinica' historia_clinica.id %}" method="post">
+                                    {% csrf_token %}
+                                </form>
+                                <div class="crud">
+                                    <a href="{% url 'editar_historiaclinica' historia_clinica.id %}"><i class="bi bi-pencil-square fs-4 text-black"></i></a>
+                                    <a href="#" class="eliminar-icono" onclick="confirmarEliminarHC(event, {{ historia_clinica.id }});">
+                                        <i class="bi bi-trash fs-3 text-black"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                    {% endfor %}
+
+                {% else %}
+                    <p>La paciente no tiene historia clinica cargada.</p>
+                {% endif %}
+            </div>
+         </div>
+    </section>
+</section>
+
+
+{% endblock contenido %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+<title>Pacientes</title>
+{% endblock titulo %}
+
+
+{% block contenido %}
+<h1 class="d-flex justify-content-center">Agregar pacientes</h1>
+<br><br><br>
+<form class="d-flex justify-content-center" method="post">
+    <div class="d-block border border-black border-3 p-5">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        {{ formulario.errors }}
+        <input class="btn btn-success" type="submit" value="Guardar" />
+    </div>
+</form>
+<br><br><br><br><br>
+<a class="d-flex justify-content-center" href="{% url 'lista_pacientes' %}"><button type="button" class="btn btn-outline-primary">Volver a la listas</button></a>
+{% endblock contenido %}

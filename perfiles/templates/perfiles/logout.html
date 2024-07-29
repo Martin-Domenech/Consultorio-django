@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+<title>Inicio</title>
+{% endblock titulo %}
+
+
+{% block contenido %}
+<section class="d-flex justify-content-center">
+    <a class="navbar-brand" href="{% url 'login' %}"><button type="button" class="btn btn-secondary">iniciar sesion</button></a>
+</section>
+<br><br><br>
+
+{% endblock contenido %}

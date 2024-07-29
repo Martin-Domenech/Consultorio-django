@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+<title>HistoriaClinica</title>
+{% endblock titulo %}
+
+{% block contenido %}
+  <h1>Crear Historia Clínica</h1>
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="id_motivo_consulta">Motivo de Consulta:</label>
+      {{ form.motivo_consulta }}
+      <br>
+      <label for="id_comentario_consulta">Comentario de Consulta:</label>
+      {{ form.comentario_consulta }}
+      <br>
+      <label for="id_sintomas">Síntomas:</label>
+      {{ form.sintomas }}
+      <br>
+      <label for="id_examen_fisico">Examen Físico:</label>
+      {{ form.examen_fisico }}
+      <br>
+      <h2>Agregar Imágenes</h2>
+      {{ formset.management_form }}
+      {% for form in formset %}
+          <div>
+              {{ form.as_p }}
+          </div>
+      {% endfor %}
+      <br>
+      <button type="submit">Guardar</button>
+  </form>
+{% endblock contenido %} 
